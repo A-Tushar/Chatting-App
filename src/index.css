@@ -1,0 +1,108 @@
+*{
+  padding: 0;
+  margin: 0;
+}
+a{
+  list-style-type: none;
+}
+
+:root{
+  --primary-font:'Nunito', sans-serif;
+  --rare-font:'Open Sans', sans-serif;
+  --primary-color:#5F35F5;
+  --text-color:#11175D;
+}
+.authenticationpage{
+  display: flex;
+}
+.authenticationpage .left{
+  width: 50%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+}
+.authenticationpage .right{
+  width: 50%;
+  height: 100vh;
+}
+.authenticationpage .bg{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.text-container{
+  margin-top: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.text-container h2{
+color:var(--text-color);
+font-family: var(--primary-font);
+font-size: 34px;
+font-weight: 700;
+margin-bottom: 13px;
+}
+.text-container p{
+color: rgba(0, 0, 0, 0.5);
+font-family: var(--primary-font);
+font-size: 20px;
+font-weight: 400;
+margin-bottom: 60px;
+}
+.text-container .text{
+  width: 80%;
+  height:  82px;
+  margin: 25px 0px 10px 0px;
+}
+.text-container button{
+  width: 80%;
+  height: 68px;
+  color: #FFF;
+  font-family: var(--primary-font);
+  font-size: 21px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  border-radius: 85px;
+  -webkit-border-radius: 85px;
+  -moz-border-radius: 85px;
+  -ms-border-radius: 85px;
+  -o-border-radius: 85px;
+  background-color: #5F35F5;
+}
+.text-container .loginbtn{
+  width: 80%;
+  height: 68px;
+  color: #FFF;
+  font-family: var(--primary-font);
+  font-size: 21px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  border-radius: 9px;
+  -webkit-border-radius: 9px;
+  -moz-border-radius: 9px;
+  -ms-border-radius: 9px;
+  -o-border-radius: 9px;
+  background-color: #5F35F5;
+}
+.text-container .bottomtext{
+  color: var(--text-color);
+  font-family:var(--rare-font);
+  font-size: 14px;
+  font-weight: 400;
+  }
+.text-container .bottomtext span{
+color: #EA6C00;
+font-family:var(--rare-font);
+font-size: 14px;
+font-weight: 700;
+border: none;
+}
+.eye {
+  font-size: 26px;
+  position: absolute;
+  top: 475px;
+  right: 70px;
+}
