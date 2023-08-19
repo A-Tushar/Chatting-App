@@ -83,12 +83,27 @@ const Registration = () => {
           progress: undefined,
           theme: "light",
           });
-          
+
         })
 
       }).catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
+
+        if(errorCode.includes("email")){
+          setemailerror("Email Already Used !")
+          toast.error('Email Already Used !', {
+            position: "bottom-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            });
+          setload(false)
+        }
         console.log(errorCode,errorMessage);
        
       });
