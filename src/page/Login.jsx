@@ -15,7 +15,7 @@ const Login = () => {
                 <TextField type='email' id="outlined-basic" label="Email" variant="outlined" className='text' />
                 <TextField type='password' id="outlined-basic" label="Password" variant="outlined" className='text' />
                 <Button className='loginbtn' variant="contained">Login to Continue</Button>
-                <div className='bottomtext'>Don't have an account ? <Link to={"/registration"}> <span>Sign Up</span> </Link></div>
+                <div className='bottomtext'>Don't have an account ? <Link to={"/"}> <span>Sign Up</span> </Link></div>
             </div>
         </div>
         <div className="right">
