@@ -7,6 +7,7 @@ import {
 } from "react-router-dom";
 import Registration from './page/Registration'
 import Login from './page/Login';
+import { ToastContainer, toast } from 'react-toastify';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -29,6 +30,7 @@ function App() {
   return (
     <>
         <RouterProvider router={router} />
+        <ToastContainer />
     </>
   )
 }
