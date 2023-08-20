@@ -1,5 +1,5 @@
 import React from 'react'
-import bg from "../assets/authentication.png"
+import bg from "../assets/lbg.jpg"
 import Image from '../components/Image'
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
