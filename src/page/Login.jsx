@@ -60,6 +60,16 @@ const Login = () => {
             theme: "light",
             });
         }else{
+          toast.success('Login Succesfull !', {
+          position: "bottom-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          });
           setTimeout(() => {
             nevigate("/home")
           }, 1000);
@@ -85,22 +95,43 @@ const Login = () => {
         const errorCode = error.code;
         const errorMessage = error.message;
 
-        if(errorCode){
+        if(errorCode.includes("wrong-password")){
+         setpassworderror("wrong-password")
+          setload(false)
+        }
+        if(errorCode.includes("email")){
           setemailerror("Email Already Used !")
-          toast.error('Email Already Used !', {
-            position: "bottom-center",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "light",
-            });
+          setload(false)
+        }
+        if(errorCode.includes("user-not-found")){
+          setemailerror("No Account Created !")
+          toast.error('Account Not Found ! Creat an Account First.', {
+          position: "bottom-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          });
+          setload(false)
+        }
+        if(errorCode.includes("disabled")){
+          toast.error('this account has been temporarily disabled due to many failed login attempts', {
+          position: "bottom-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          });
           setload(false)
         }
         console.log(errorCode,errorMessage);
-       
+       setload(false)
       });
     }
 
