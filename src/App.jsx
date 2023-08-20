@@ -8,6 +8,7 @@ import {
 import Registration from './page/Registration'
 import Login from './page/Login';
 import { ToastContainer, toast } from 'react-toastify';
+import Home from './page/Home';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -19,6 +20,10 @@ const router = createBrowserRouter(
       <Route
       path="/login"
       element={<Login />}
+      />
+      <Route
+      path="/Home"
+      element={<Home />}
       />
     
    </Route>

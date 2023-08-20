@@ -3,7 +3,7 @@ import bg from "../assets/authentication.png"
 import Image from '../components/Image'
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
-import { Link } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 import Alert from '@mui/material/Alert';
 import {IoIosEye,IoIosEyeOff} from 'react-icons/io'
 import { getAuth, createUserWithEmailAndPassword, sendEmailVerification } from "firebase/auth";
@@ -13,7 +13,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const Registration = () => {
   const auth = getAuth();
-
+  let nevigate = useNavigate()
   let [fromdata,setfromdata]=useState({
       fullname:"",
       email:"",
@@ -84,6 +84,9 @@ const Registration = () => {
           theme: "light",
           });
 
+          setTimeout(() => {
+            nevigate("/login")
+          }, 1000);
         })
 
       }).catch((error) => {
@@ -104,8 +107,7 @@ const Registration = () => {
             });
           setload(false)
         }
-        console.log(errorCode,errorMessage);
-       
+        setload(false)
       });
     }
 
