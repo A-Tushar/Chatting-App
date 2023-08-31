@@ -7,11 +7,14 @@ import { Link, Navigate, useNavigate } from 'react-router-dom';
 import Alert from '@mui/material/Alert';
 import {IoIosEye,IoIosEyeOff} from 'react-icons/io'
 import { getAuth, createUserWithEmailAndPassword, sendEmailVerification } from "firebase/auth";
+import { GoogleAuthProvider } from "firebase/auth";
 import { RotatingLines } from 'react-loader-spinner'
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Glogo from '../assets/Glogo.jpg'
 
 const Registration = () => {
+  const provider = new GoogleAuthProvider();
   const auth = getAuth();
   let nevigate = useNavigate()
   let [fromdata,setfromdata]=useState({
@@ -120,6 +123,10 @@ const Registration = () => {
             <div className='text-container'>
                 <h2>Get started with easily register</h2>
                 <p>Free register and you can enjoy it</p>
+                <div className="google">
+                  <Image src={Glogo} alt={"GOOGLE"}className='glogo'/>
+                  <p>Registration with Google</p>
+                </div>
                 <TextField onChange={handlechange} name='fullname' type='text' id="outlined-basic" label="Full Name" variant="outlined" className='text'value={fromdata.fullname}/>
                 {fullnameerroe && <Alert severity="error">{fullnameerroe}</Alert>} 
                 <TextField onChange={handlechange} name='email' type='email' id="outlined-basic" label="Email" variant="outlined" className='text' value={fromdata.email}/>

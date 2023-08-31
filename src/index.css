@@ -31,7 +31,7 @@ a{
   object-fit: cover;
 }
 .text-container{
-  margin-top: 150px;
+  margin-top: 110px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -103,4 +103,20 @@ border: none;
   position: absolute;
   top: 475px;
   right: 70px;
+}
+.google{
+  height: 100px;
+  width: 400px;
+  display: flex;
+  font-family: var(--primary-font);
+  color: var(--text-color);
+  font-size: 12px;
+}
+.glogo{
+  width: 40%;
+  object-fit: contain;
+}
+.google p {
+  text-align: center;
+  margin-top: 35px;
 }
