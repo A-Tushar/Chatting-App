@@ -15,6 +15,7 @@ import Glogo from '../assets/Glogo.jpg'
 
 const Registration = () => {
   const provider = new GoogleAuthProvider();
+  // only eyta import korsi ar kichu kori nai 
   const auth = getAuth();
   let nevigate = useNavigate()
   let [fromdata,setfromdata]=useState({

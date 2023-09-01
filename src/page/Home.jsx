@@ -40,6 +40,7 @@ const Home = () => {
   return (
     <>
      <h1>Under constraction !!! </h1>
+     <h2>Welcome .... Coming soon</h2>
      <Button onClick={handlelogout} variant="contained">Sing Out</Button>
     </>
   )
