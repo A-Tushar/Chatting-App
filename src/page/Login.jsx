@@ -160,7 +160,8 @@ const Login = () => {
                 :
                 <Button onClick={handlelogin} className='loginbtn' variant="contained">Login to Continue</Button>
                 }
-                <div className='bottomtext'>Don't have an account ? <Link to={"/"}> <span>Sign Up</span> </Link></div>
+                <div className='bottomtext'>Don't have an account ? <Link to={"/"}><span>Sign Up</span> </Link></div>
+                <div className='bottomtext'>Forget Password ? <Link to={"/forgetpassword"}><span>Reset !</span> </Link></div>
             </div>
         </div>
         <div className="right">
