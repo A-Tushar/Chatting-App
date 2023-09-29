@@ -1,5 +1,7 @@
 import React,{useState} from 'react'
 import bg from "../assets/lbg.jpg"
+import logo from "../assets/logo.png"
+import Glogo from "../assets/Glogo.jpg"
 import Image from '../components/Image'
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
@@ -7,10 +9,11 @@ import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import Alert from '@mui/material/Alert';
 import { RotatingLines } from 'react-loader-spinner'
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { getAuth, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 
 const Login = () => {
   const auth = getAuth();
+  const provider = new GoogleAuthProvider();
   let nevigate = useNavigate()
   let [load,setload]= useState(false);
   let [emailerror,setemailerror]=useState("")
@@ -136,13 +139,36 @@ const Login = () => {
     }
 
   };
+  let handleGooglelogin = ()=>{
+    signInWithPopup(auth, provider).then(()=>{
+      toast.success('Login Succesfull !', {
+        position: "bottom-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        });
+        setTimeout(() => {
+          nevigate("/home")
+        }, 1000);
+    })
+  }
 
   return (
     <div className='authenticationpage'>
         <div className="left">
             <div className='text-container'>
+            <Image src={logo} alt={"Image"} className={"logo"}/>
                 <h2>Login to your account!</h2>
                 <p></p>
+
+                <div onClick={handleGooglelogin} className="google">
+                  <Image src={Glogo} alt={"Google"}className={"glogo"} />
+                </div>
+
                 <TextField onChange={handlechange} name='email' type='email' id="outlined-basic" label="Email" variant="outlined" className='text' />
                 {emailerror && <Alert severity="error">{emailerror}</Alert>}
                 <TextField onChange={handlechange} name='password' type='password' id="outlined-basic" label="Password" variant="outlined" className='text' />

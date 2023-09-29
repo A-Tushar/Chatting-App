@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import bg from "../assets/authentication.png"
+import logo from "../assets/logo.png"
 import Image from '../components/Image'
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
@@ -11,7 +12,7 @@ import { GoogleAuthProvider } from "firebase/auth";
 import { RotatingLines } from 'react-loader-spinner'
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import Glogo from '../assets/Glogo.jpg'
+
 
 const Registration = () => {
   const provider = new GoogleAuthProvider();
@@ -122,12 +123,9 @@ const Registration = () => {
     <div className='authenticationpage'>
         <div className="left">
             <div className='text-container'>
+              <Image src={logo} alt={"Image"} className={"logo"}/>
                 <h2>Get started with easily register</h2>
                 <p>Free register and you can enjoy it</p>
-                <div className="google">
-                  <Image src={Glogo} alt={"GOOGLE"}className='glogo'/>
-                  <p>Registration with Google</p>
-                </div>
                 <TextField onChange={handlechange} name='fullname' type='text' id="outlined-basic" label="Full Name" variant="outlined" className='text'value={fromdata.fullname}/>
                 {fullnameerroe && <Alert severity="error">{fullnameerroe}</Alert>} 
                 <TextField onChange={handlechange} name='email' type='email' id="outlined-basic" label="Email" variant="outlined" className='text' value={fromdata.email}/>

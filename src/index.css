@@ -115,6 +115,7 @@ border: none;
 .glogo{
   width: 40%;
   object-fit: contain;
+  margin: 0 auto;
 }
 .google p {
   text-align: center;

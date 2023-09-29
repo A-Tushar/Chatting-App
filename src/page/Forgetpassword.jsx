@@ -4,6 +4,8 @@ import Button from '@mui/material/Button';
 import { getAuth, sendPasswordResetEmail } from "firebase/auth";
 import { toast } from 'react-toastify';
 import { Link, useNavigate } from 'react-router-dom';
+import logo from "../assets/logo.png"
+import Image from '../components/Image'
 
 
 const Forgetpassword = () => {
@@ -49,9 +51,10 @@ const Forgetpassword = () => {
   return (
     <div className="forgetpage">
       <div className="forgetbox">
+        <Image src={logo} alt={"Image"} className={"logo"}/>
         <h3> Reset Your Password !</h3>
-      <TextField onChange={(e)=>setemail(e.target.value)} id="standard-basic" label="Your Email" variant="standard" /> <br />
-      <Button onClick={handleforgetpass} variant="contained">Reset</Button>
+        <TextField onChange={(e)=>setemail(e.target.value)} id="standard-basic" label="Your Email" variant="standard" /> <br />
+        <Button onClick={handleforgetpass} variant="contained">Reset</Button>
       </div>
     </div>
   )
