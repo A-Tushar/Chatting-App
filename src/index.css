@@ -120,3 +120,25 @@ border: none;
   text-align: center;
   margin-top: 35px;
 }
+.forgetpage{
+  background-color:antiquewhite;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.forgetbox{
+  background-color: #FFF;
+  padding: 10px;
+  width: 20%;
+  text-align: center;
+}
+.forgetbox button{
+ margin: 17px;
+}
+.forgetbox h3{
+  margin: 17px;
+  font-family: var(--primary-font);
+  color: var(--text-color);
+  font-size: 32px;
+}
