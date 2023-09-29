@@ -49,7 +49,7 @@ const Forgetpassword = () => {
   return (
     <div className="forgetpage">
       <div className="forgetbox">
-        <h3> Reset You Password !</h3>
+        <h3> Reset Your Password !</h3>
       <TextField onChange={(e)=>setemail(e.target.value)} id="standard-basic" label="Your Email" variant="standard" /> <br />
       <Button onClick={handleforgetpass} variant="contained">Reset</Button>
       </div>
