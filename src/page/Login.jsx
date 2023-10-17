@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React,{useState,useEffect} from 'react'
 import bg from "../assets/lbg.jpg"
 import logo from "../assets/logo.png"
 import Glogo from "../assets/Glogo.jpg"
@@ -10,11 +10,22 @@ import { toast } from 'react-toastify';
 import Alert from '@mui/material/Alert';
 import { RotatingLines } from 'react-loader-spinner'
 import { getAuth, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import {logeduser} from '../slices/userSlice'
+import { useSelector, useDispatch } from 'react-redux'
 
 const Login = () => {
   const auth = getAuth();
   const provider = new GoogleAuthProvider();
-  let nevigate = useNavigate()
+  let nevigate = useNavigate();
+  let dispatch = useDispatch ();
+  let data = useSelector(state=>state.logedUser.value)
+  
+  useEffect(()=>{
+    if(data){
+      nevigate("/Home")
+    }
+  },[]);
+
   let [load,setload]= useState(false);
   let [emailerror,setemailerror]=useState("")
   let [passworderror,setpassworderror]=useState("")
@@ -74,7 +85,8 @@ const Login = () => {
           theme: "light",
           });
           setTimeout(() => {
-            nevigate("/home")
+            nevigate("/home");
+            dispatch(logeduser(user.user))
           }, 1000);
         }
     

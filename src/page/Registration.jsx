@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState ,useEffect} from 'react'
 import bg from "../assets/authentication.png"
 import logo from "../assets/logo.png"
 import Image from '../components/Image'
@@ -12,6 +12,8 @@ import { GoogleAuthProvider } from "firebase/auth";
 import { RotatingLines } from 'react-loader-spinner'
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import {logeduser} from '../slices/userSlice'
+import { useSelector, useDispatch } from 'react-redux'
 
 
 const Registration = () => {
@@ -19,6 +21,14 @@ const Registration = () => {
   // only eyta import korsi ar kichu kori nai 
   const auth = getAuth();
   let nevigate = useNavigate()
+  let data = useSelector(state=>state.logedUser.value)
+  
+  useEffect(()=>{
+    if(data){
+      nevigate("/Home")
+    }
+  },[]);
+
   let [fromdata,setfromdata]=useState({
       fullname:"",
       email:"",
