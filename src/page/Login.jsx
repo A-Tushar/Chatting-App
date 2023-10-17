@@ -87,6 +87,7 @@ const Login = () => {
           setTimeout(() => {
             nevigate("/home");
             dispatch(logeduser(user.user))
+            localStorage.setItem("user", JSON.stringify(user.user))
           }, 1000);
         }
     

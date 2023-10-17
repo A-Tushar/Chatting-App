@@ -12,9 +12,10 @@ const Forgetpassword = () => {
   const auth = getAuth();
   let [email, setemail]= useState("")
   let nevigate = useNavigate()
-
+  let handlehome=()=>{
+    nevigate("/login");
+  }
   
-
   let handleforgetpass= ()=>{
 
   sendPasswordResetEmail(auth, email)
@@ -55,6 +56,7 @@ const Forgetpassword = () => {
         <h3> Reset Your Password !</h3>
         <TextField onChange={(e)=>setemail(e.target.value)} id="standard-basic" label="Your Email" variant="standard" /> <br />
         <Button onClick={handleforgetpass} variant="contained">Reset</Button>
+        <Button onClick={handlehome} variant="contained">Back</Button>
       </div>
     </div>
   )

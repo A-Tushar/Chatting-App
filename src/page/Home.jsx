@@ -33,6 +33,7 @@ const Home = () => {
         theme: "light",
         });
         setTimeout(() => {
+          localStorage.removeItem("user")
           dispatch(logeduser(null))
           nevigate("/login")
 
