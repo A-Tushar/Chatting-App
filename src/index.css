@@ -111,11 +111,13 @@ border: none;
   font-family: var(--primary-font);
   color: var(--text-color);
   font-size: 12px;
+
 }
 .glogo{
   width: 40%;
   object-fit: contain;
   margin: 0 auto;
+  cursor: pointer;
 }
 .google p {
   text-align: center;
@@ -142,4 +144,28 @@ border: none;
   font-family: var(--primary-font);
   color: var(--text-color);
   font-size: 32px;
+}
+.sidebar{
+  background-color: #9196cf;
+  height: 95vh;
+  width: 95%;
+  text-align: center;
+  margin: auto;
+  padding: 20px;
+  box-sizing: border-box;
+  border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
+}
+.profilepicture{
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+}
+.icons{
+  font-size: 40px;
 }

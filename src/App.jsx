@@ -10,6 +10,9 @@ import Login from './page/Login';
 import { ToastContainer, toast } from 'react-toastify';
 import Home from './page/Home';
 import Forgetpassword from './page/Forgetpassword';
+import Massage from './page/Massage';
+import Notification from './page/Notification';
+import Rootlayout from './components/Rootlayout';
 
 
 const router = createBrowserRouter(
@@ -24,9 +27,22 @@ const router = createBrowserRouter(
       element={<Login />}
       />
       <Route
-      path="/Home"
-      element={<Home />}
-      />
+      path="/"
+      element={<Rootlayout />}
+      > 
+          <Route
+            path="/Home"
+            element={<Home />}
+          />
+          <Route
+            path="/massage"
+            element={<Massage/>}
+          />
+          <Route
+            path="/notifications"
+            element={<Notification/>}
+          />
+      </Route>
       <Route
       path="/forgetpassword"
       element={<Forgetpassword />}

@@ -7,7 +7,8 @@ import Button from '@mui/material/Button';
 import { Link, Navigate, useNavigate } from 'react-router-dom';
 import Alert from '@mui/material/Alert';
 import {IoIosEye,IoIosEyeOff} from 'react-icons/io'
-import { getAuth, createUserWithEmailAndPassword, sendEmailVerification } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, sendEmailVerification,updateProfile } from "firebase/auth";
+import { getDatabase, ref, set,push } from "firebase/database";
 import { GoogleAuthProvider } from "firebase/auth";
 import { RotatingLines } from 'react-loader-spinner'
 import { toast } from 'react-toastify';
@@ -20,6 +21,7 @@ const Registration = () => {
   const provider = new GoogleAuthProvider();
   // only eyta import korsi ar kichu kori nai 
   const auth = getAuth();
+  const db = getDatabase();
   let nevigate = useNavigate()
   let data = useSelector(state=>state.logedUser.value)
   
@@ -81,27 +83,38 @@ const Registration = () => {
       createUserWithEmailAndPassword(auth, fromdata.email, fromdata.password).then(()=>{
         console.log("done");
         sendEmailVerification(auth.currentUser).then(()=>{
-    
-        setfromdata({
-          fullname:"",
-          email:"",
-          password:""
-        })
-        setload(false)
-        toast.success('Registration Succesfull !', {
-          position: "bottom-center",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "light",
-          });
+          updateProfile(auth.currentUser, {
+            displayName: fromdata.fullname , 
+            photoURL: "https://firebasestorage.googleapis.com/v0/b/chattingapp-fea0a.appspot.com/o/A.jpg?alt=media&token=a0a5470e-a054-4942-bb89-eefbd873ee62&_gl=1*11pau0d*_ga*MTA2ODQ0MjYyMi4xNjkxOTUwMzU3*_ga_CW55HF8NVT*MTY5NzY1MTg2My4xNS4xLjE2OTc2NTM2MDguNDkuMC4w"
+          }).then(() => {
 
-          setTimeout(() => {
-            nevigate("/login")
-          }, 1000);
+            setfromdata({
+              fullname:"",
+              email:"",
+              password:""
+            })
+            setload(false)
+            toast.success('Registration Succesfull !', {
+              position: "bottom-center",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "light",
+              });
+    
+              setTimeout(() => {
+                nevigate("/login")
+              }, 1000);
+          })
+        }).then(()=>{
+          set(push(ref(db, 'users')), {
+            username:fromdata.fullname,
+            email: fromdata.email,
+            profile_picture :"https://firebasestorage.googleapis.com/v0/b/chattingapp-fea0a.appspot.com/o/A.jpg?alt=media&token=a0a5470e-a054-4942-bb89-eefbd873ee62&_gl=1*11pau0d*_ga*MTA2ODQ0MjYyMi4xNjkxOTUwMzU3*_ga_CW55HF8NVT*MTY5NzY1MTg2My4xNS4xLjE2OTc2NTM2MDguNDkuMC4w", 
+          });
         })
 
       }).catch((error) => {

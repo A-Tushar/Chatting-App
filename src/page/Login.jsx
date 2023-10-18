@@ -10,11 +10,13 @@ import { toast } from 'react-toastify';
 import Alert from '@mui/material/Alert';
 import { RotatingLines } from 'react-loader-spinner'
 import { getAuth, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { getDatabase, ref, set,push } from "firebase/database";
 import {logeduser} from '../slices/userSlice'
 import { useSelector, useDispatch } from 'react-redux'
 
 const Login = () => {
   const auth = getAuth();
+  const db = getDatabase();
   const provider = new GoogleAuthProvider();
   let nevigate = useNavigate();
   let dispatch = useDispatch ();
@@ -90,7 +92,13 @@ const Login = () => {
             localStorage.setItem("user", JSON.stringify(user.user))
           }, 1000);
         }
-    
+        
+        // setTimeout(() => {
+        //   nevigate("/home");
+        //   dispatch(logeduser(user.user))
+        //   localStorage.setItem("user", JSON.stringify(user.user))
+        // }, 1000);
+
         setfromdata({
           email:"",
           password:""
@@ -153,7 +161,17 @@ const Login = () => {
 
   };
   let handleGooglelogin = ()=>{
-    signInWithPopup(auth, provider).then(()=>{
+    signInWithPopup(auth, provider).then((user)=>{
+      console.log(user.user.photoURL);
+      set(push(ref(db, 'users')), {
+        username:user.user.displayName,
+        email: user.user.email,
+        profile_picture :user.user.photoURL, 
+      });
+
+      dispatch(logeduser(user.user))
+      localStorage.setItem("user", JSON.stringify(user.user))
+
       toast.success('Login Succesfull !', {
         position: "bottom-center",
         autoClose: 5000,
