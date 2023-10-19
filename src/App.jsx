@@ -13,6 +13,7 @@ import Forgetpassword from './page/Forgetpassword';
 import Massage from './page/Massage';
 import Notification from './page/Notification';
 import Rootlayout from './components/Rootlayout';
+import Settings from './page/Settings';
 
 
 const router = createBrowserRouter(
@@ -31,7 +32,7 @@ const router = createBrowserRouter(
       element={<Rootlayout />}
       > 
           <Route
-            path="/Home"
+            path="/home"
             element={<Home />}
           />
           <Route
@@ -41,6 +42,10 @@ const router = createBrowserRouter(
           <Route
             path="/notifications"
             element={<Notification/>}
+          />
+          <Route
+            path="/settings"
+            element={<Settings />}
           />
       </Route>
       <Route
