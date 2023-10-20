@@ -80,7 +80,7 @@ const Registration = () => {
       //   setfullnameerror("First & Last Name required")
       // }
       setload(true)
-      createUserWithEmailAndPassword(auth, fromdata.email, fromdata.password).then(()=>{
+      createUserWithEmailAndPassword(auth, fromdata.email, fromdata.password).then((user)=>{
         console.log("done");
         sendEmailVerification(auth.currentUser).then(()=>{
           updateProfile(auth.currentUser, {
@@ -110,7 +110,7 @@ const Registration = () => {
               }, 1000);
           })
         }).then(()=>{
-          set(push(ref(db, 'users')), {
+          set(ref(db, 'users/'+user.user.uid), {
             username:fromdata.fullname,
             email: fromdata.email,
             profile_picture :"https://firebasestorage.googleapis.com/v0/b/chattingapp-fea0a.appspot.com/o/A.jpg?alt=media&token=a0a5470e-a054-4942-bb89-eefbd873ee62&_gl=1*11pau0d*_ga*MTA2ODQ0MjYyMi4xNjkxOTUwMzU3*_ga_CW55HF8NVT*MTY5NzY1MTg2My4xNS4xLjE2OTc2NTM2MDguNDkuMC4w", 

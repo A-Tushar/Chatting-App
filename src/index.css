@@ -204,11 +204,71 @@ border: none;
 .box{
   width: 100%;
   height: 45vh;
-  background: rgba(0, 255, 255, 0.228);
+  background: white;
   margin-top: 2.5vh;
   border-radius: 10px;
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
   -ms-border-radius: 10px;
   -o-border-radius: 10px;
+  padding: 20px;
+  box-sizing: border-box;
+  box-shadow: -1px 2px 23px -4px rgba(0,0,0,0.48);
+-webkit-box-shadow: -1px 2px 23px -4px rgba(0,0,0,0.48);
+-moz-box-shadow: -1px 2px 23px -4px rgba(0,0,0,0.48);
+overflow-y: scroll;
+}
+.box h2{
+  font-family: var(--primary-font);
+  font-size: 20px;
+  font-weight: 800;
+  color: black;
+}
+.box .list{
+  display: flex;
+  padding: 15px;
+  align-items: center;
+  column-gap: 15px;
+  border-bottom: 1px solid rgba(181, 172, 172, 0.435);
+  
+}
+.box .list h3{
+  font-family: var(--primary-font);
+  font-size: 18px;
+  font-weight: 600;
+}
+.box .list h4{
+  font-family: var(--primary-font);
+  font-size: 15px;
+  font-weight: 400;
+  color: rgba(77, 77, 77, 0.75);
+}
+.box button{
+  display: block;
+  padding: 5px 22px;
+  border: none;
+  font-family:var(--rare-font);
+  font-size: 15px;
+  font-weight: 800;
+  line-height: normal;
+  cursor: pointer;
+  background-color: #9196cf;
+  border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
+}
+.box .list:last-child{
+  border-bottom: 0;
+}
+.boximg{
+  height: 80px;
+  width: 80px;
+  object-fit: contain;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
 }

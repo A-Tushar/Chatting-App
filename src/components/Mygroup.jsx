@@ -2,19 +2,19 @@ import React from 'react'
 import Image from './Image'
 import gimg from '../assets/img.png'
 
-const Grouplist = () => {
+const Mygroup = () => {
   return (
     <>
     <div className="box">
-        <h2>Groups List</h2>
-        <div className='list'>
+        <h2>My Groups</h2>
+        {/* <div className='list'>
         <Image src={gimg}/>
         <h3>Friends Forever</h3>
         <button>JOIN</button>
-        </div>
+        </div> */}
     </div>
     </>
   )
 }
 
-export default Grouplist
+export default Mygroup
