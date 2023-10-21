@@ -272,3 +272,20 @@ overflow-y: scroll;
   -ms-border-radius: 50%;
   -o-border-radius: 50%;
 }
+.rejectbtn{
+  display: block;
+  padding: 5px 22px;
+  border: none;
+  font-family:var(--rare-font);
+  font-size: 15px;
+  font-weight: 800;
+  line-height: normal;
+  cursor: pointer;
+  color: #9196cf;
+  border: 1px solid #9196cf;
+  border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
+}
