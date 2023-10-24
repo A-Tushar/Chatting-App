@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Image from './Image'
-import { getDatabase, ref,onValue, set,push } from "firebase/database";
+import { getDatabase, ref,onValue, set,push,remove } from "firebase/database";
 import { useSelector } from 'react-redux';
 
 const Userlist = () => {
@@ -8,6 +8,8 @@ const Userlist = () => {
   let userinfo = useSelector((state)=>state.logedUser.value);
   let [requestlist,setRequestlist]=useState([]);
   let [users,SetUsers]=useState([]);
+  let [friendlist,setFriendlist]=useState([]);
+  let [blocklist,setBlocklist]=useState([]);
 
   useEffect(()=>{
 
@@ -48,6 +50,37 @@ const Userlist = () => {
     });
     },[]);
 
+    useEffect(()=>{
+    
+      const userRef = ref(db, 'friendlist');
+      onValue(userRef, (snapshot) => {
+      let arr=[]
+      snapshot.forEach(item=>{
+        arr.push(item.val().whoreceiveid+item.val().whosendid);      
+      })
+  
+      setFriendlist(arr);
+  
+      });
+      },[]);
+
+      useEffect(()=>{
+    
+        const userRef = ref(db, 'blocklist');
+        onValue(userRef, (snapshot) => {
+        let arr=[]
+        snapshot.forEach(item=>{
+          arr.push(item.val().whoreceiveid+item.val().whosendid);      
+        })
+    
+        setBlocklist(arr);
+    
+        });
+        },[]);
+    // let handlecancle=(item)=>{
+    //   remove( ref(db, 'friendrequest/'+item.frid))
+    // };
+
   return (
     <>
     <div className="box">
@@ -57,8 +90,17 @@ const Userlist = () => {
         <Image className={"boximg"} src={item.profile_picture}/>
         <h3>{item.username}</h3>
         {requestlist.includes(item.userid+userinfo.uid)||requestlist.includes(userinfo.uid+item.userid)?
+      <>
       <p className='rejectbtn'>Pending</p>
+      {/* <button onClick={()=>handlecancle(item)} color='secondary'>Cancle</button> */}
+      </> 
       :
+        blocklist.includes(item.userid+userinfo.uid)||blocklist.includes(userinfo.uid+item.userid)?   
+        <p className='rejectbtn'>Blocked</p>
+        :
+         friendlist.includes(item.userid+userinfo.uid)||friendlist.includes(userinfo.uid+item.userid)?   
+        <p className='rejectbtn'>Friend</p>
+        :
       <button onClick={()=>handlefriendrequest(item)}>Add Friend</button>
       }
         

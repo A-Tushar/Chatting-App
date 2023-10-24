@@ -31,7 +31,16 @@ const Friendrequest = () => {
 
     let handlereject =(item)=>{
       remove( ref(db, 'friendrequest/'+item.frid))
-    }
+    };
+
+    let acceptfriend=(item)=>{
+        // console.log(item);
+      set(push(ref(db, 'friendlist')), {
+        ...item
+      }).then(()=>{
+        remove( ref(db, 'friendrequest/'+item.frid))
+      })
+    };
 
   return (
     <>
@@ -42,7 +51,7 @@ const Friendrequest = () => {
         <div className='list'>
         <Image src={gimg}/>
         <h3>{item.whosendname}</h3>
-        <button>Accept</button>
+        <button onClick={()=>acceptfriend(item)} >Accept</button>
         <p onClick={()=>handlereject(item)} className='rejectbtn'>Reject</p>
         </div>
         
