@@ -222,7 +222,8 @@ overflow-y: scroll;
   font-family: var(--primary-font);
   font-size: 20px;
   font-weight: 800;
-  color: black;
+  color: black; 
+ 
 }
 .box .list{
   display: flex;
@@ -231,6 +232,10 @@ overflow-y: scroll;
   column-gap: 15px;
   border-bottom: 1px solid rgba(181, 172, 172, 0.435);
   
+}
+.box .groupheading{
+  display: flex;
+  justify-content: space-between;
 }
 .box .list h3{
   font-family: var(--primary-font);
@@ -246,6 +251,23 @@ overflow-y: scroll;
 .box button{
   display: block;
   padding: 5px 22px;
+  border: none;
+  font-family:var(--rare-font);
+  font-size: 15px;
+  font-weight: 800;
+  line-height: normal;
+  cursor: pointer;
+  background-color: #9196cf;
+  border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
+}
+.modalbutton{
+  display: block;
+  padding: 5px 22px;
+  margin-top: 20px;
   border: none;
   font-family:var(--rare-font);
   font-size: 15px;

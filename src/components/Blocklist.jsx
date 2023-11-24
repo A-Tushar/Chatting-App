@@ -12,7 +12,7 @@ const Blocklist = () => {
   const db = getDatabase();
   let userinfo = useSelector((state)=>state.logedUser.value);
   let [blocklist,setBlocklist]=useState([]);
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 

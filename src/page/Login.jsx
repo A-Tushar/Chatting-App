@@ -64,40 +64,40 @@ const Login = () => {
       setload(true)
       signInWithEmailAndPassword(auth, fromdata.email, fromdata.password).then((user)=>{
         console.log('');
-        if(!user.user.emailVerified){
-          toast.error('Please Verify Your Email !', {
-            position: "bottom-center",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "light",
-            });
-        }else{
-          toast.success('Login Succesfull !', {
-          position: "bottom-center",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "light",
-          });
-          setTimeout(() => {
-            nevigate("/home");
-            dispatch(logeduser(user.user))
-            localStorage.setItem("user", JSON.stringify(user.user))
-          }, 1000);
-        }
+        // if(!user.user.emailVerified){
+        //   toast.error('Please Verify Your Email !', {
+        //     position: "bottom-center",
+        //     autoClose: 5000,
+        //     hideProgressBar: false,
+        //     closeOnClick: true,
+        //     pauseOnHover: true,
+        //     draggable: true,
+        //     progress: undefined,
+        //     theme: "light",
+        //     });
+        // }else{
+        //   toast.success('Login Succesfull !', {
+        //   position: "bottom-center",
+        //   autoClose: 5000,
+        //   hideProgressBar: false,
+        //   closeOnClick: true,
+        //   pauseOnHover: true,
+        //   draggable: true,
+        //   progress: undefined,
+        //   theme: "light",
+        //   });
+        //   setTimeout(() => {
+        //     nevigate("/home");
+        //     dispatch(logeduser(user.user))
+        //     localStorage.setItem("user", JSON.stringify(user.user))
+        //   }, 1000);
+        // }
         
-        // setTimeout(() => {
-        //   nevigate("/home");
-        //   dispatch(logeduser(user.user))
-        //   localStorage.setItem("user", JSON.stringify(user.user))
-        // }, 1000);
+        setTimeout(() => {
+          nevigate("/home");
+          dispatch(logeduser(user.user))
+          localStorage.setItem("user", JSON.stringify(user.user))
+        }, 1000);
 
         setfromdata({
           email:"",
