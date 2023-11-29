@@ -77,7 +77,7 @@ const Grouplist = () => {
       })
 
       setGrlist(arr);
-      console.log(grlist);
+      // console.log(grlist);
       
   
       });

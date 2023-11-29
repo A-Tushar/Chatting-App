@@ -34,11 +34,10 @@ const Mygroup = () => {
     let arr=[]
     snapshot.forEach(item=>{
       if (item.val().admin == userinfo.uid) {
-        arr.push(item.val());
-    }
-          
-    })
-    console.log(userinfo);
+        arr.push({...item.val() ,gid:item.key});
+         }        
+     })
+  
     setGrouplist(arr);
 
     });
@@ -50,14 +49,15 @@ const Mygroup = () => {
       onValue(userRef, (snapshot) => {
       let arr=[]
       snapshot.forEach(item=>{
-        if (item.val().admin == userinfo.uid) {
-          arr.push(item.val());
-      }
-            
-      })
+
+        // console.log(item.val().groupadmin);
+        // console.log("uid",userinfo.uid);
+        if(item.val().groupadmin == userinfo.uid){
+           arr.push(item.val());
+        }
+       
+      });
       setRqlist(arr);
-      console.log(rqlist);
-  
       });
       },[]);
 
@@ -97,10 +97,13 @@ const Mygroup = () => {
         <div className="groupheading">
           <h2>Requested to Join</h2>
         </div>
+        {rqlist.map(item=>
         <div className='list'>
         <Image src={gimg}/>
-        <h3>dhdfhh</h3>
+        <h3>{item.whosendname}</h3>
         </div>
+          )}
+        
     </div>
     
       </Box>
